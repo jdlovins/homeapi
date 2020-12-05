@@ -40,15 +40,13 @@ namespace homeapi.Controllers
                         var commandsResponse = ExecutionFactory.Execute(commandInfo.devices.FirstOrDefault().id, executionInfo.command, executionInfo.parameters);
 
                         resp.payload.commands = new List<CommandsResponse>() { commandsResponse };
-                    }
-                    Console.WriteLine(JsonConvert.SerializeObject(resp));
-                    
+                    }                    
                 }
 
                 return Ok(resp);
             }
 
-            return Ok();
+            return StatusCode(400);
         }
 
         [HttpGet]
